@@ -201,3 +201,118 @@ Sem isso, o produto depende de suporte manual.
 ## 8. OpenSpec change relacionado
 
 - `openspec/changes/finalize-public-launch-readiness/`
+
+## 9. Matriz de score por dimensão
+
+| Dimensão | Nota | Evidência atual | Critério para subir | Prioridade |
+|---|---:|---|---|---|
+| Produto core | 7,5 | Gestão escolar, autenticação, Owner Dashboard, relatórios e Teacher Availability existem | Validar jornada ponta a ponta de uma escola real | P1 |
+| Estabilidade backend | 3,5 | Crash observado em validação; falha em `checkInsertTargets` | API prod-like estável por 7 dias com smoke tests verdes | P0 |
+| Billing / monetização | 4,0 | Asaas existe, mas sem validação real de webhook/conciliação | Checkout sandbox + webhook + conciliação validados | P0 |
+| Portal do responsável | 3,5 | Portal existe, mas sem evidência de TTV e escopo ponta a ponta | Responsável acessa dados, boletos, notas, frequência e comunicados em até 10 min | P0 |
+| Testes / CI | 3,0 | Testes críticos falhando; CI com .NET 8 vs projeto .NET 10 | CI verde com gates críticos obrigatórios | P0 |
+| Segurança / LGPD | 5,0 | Termos e cookie consent existem | DPA, política de retenção e fluxos de direitos do titular validados | P0 |
+| Deploy / operação | 4,0 | Docker Compose prod existe | Backup, rollback, migrações, TLS, secrets e runbook documentados | P1 |
+| Observabilidade | 4,5 | OpenTelemetry existe | Alertas e dashboards de erro, billing, notificações e negócio | P1 |
+| Onboarding / suporte | 3,0 | Falta onboarding guiado | Escola piloto conclui cadastro/importação/convite/primeiro valor sem suporte manual | P1 |
+| Marketing / pricing | 3,5 | Pricing page e FAQ existem | Pricing validado com billing real e discurso comercial testado | P2 |
+
+**Média ponderada:** 5,8 / 10.
+
+## 10. Critérios objetivos de saída do piloto fechado
+
+Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
+
+| Critério | Meta mínima |
+|---|---|
+| Estabilidade API | 7 dias sem incidentes P0/P1 em ambiente prod-like |
+| Testes críticos | 100% dos testes P0 verdes no CI |
+| Billing | checkout, webhook, idempotência e conciliação validados em sandbox |
+| Portal | TTV ≤ 10 min para responsável em 3 escolas piloto |
+| LGPD | termos, política, DPA e checklist B2B aprovados |
+| Deploy | backup, rollback e runbook testados |
+| Suporte | procedimento de incidente e SLA mínimo documentados |
+| Produto | pelo menos 1 fluxo financeiro e 1 comunicado usados por escola real |
+
+## 11. Plano independente de 7 dias
+
+### Dia 1 — Consolidar evidências e gates
+
+- Fechar checklist P0/P1/P2.
+- Criar scorecard semanal.
+- Registrar decisão de piloto fechado.
+- Priorizar os testes críticos que estão falhando.
+
+### Dia 2 — Estabilidade backend
+
+- Corrigir `AuditLogCleanupService`.
+- Investigar e resolver `checkInsertTargets`.
+- Rodar smoke tests de API.
+- Validar migrations em banco limpo.
+
+### Dia 3 — Billing Asaas
+
+- Validar checkout em sandbox.
+- Simular webhook.
+- Confirmar idempotência.
+- Registrar status de assinatura/cobrança.
+
+### Dia 4 — Portal do responsável
+
+- Validar login/escopo.
+- Validar boletos, notas, frequência e comunicados.
+- Medir TTV.
+- Registrar fricções de UX.
+
+### Dia 5 — CI/CD e qualidade
+
+- Atualizar CI para .NET 10.
+- Remover `continue-on-error` dos gates críticos.
+- Garantir ChromeHeadless em CI/local.
+- Rodar suite crítica.
+
+### Dia 6 — Jurídico e operação
+
+- Revisar termos/política.
+- Criar DPA/checklist B2B.
+- Documentar backup, rollback e runbook.
+- Revisar permissões e dados sensíveis.
+
+### Dia 7 — Decisão founder
+
+- Revisar scorecard.
+- Decidir: manter piloto, avançar para beta ou voltar para correção.
+- Atualizar OpenSpec.
+- Comunicar próximos passos para produto, engenharia, jurídico e comercial.
+
+## 12. Decisão de fundador
+
+**Decisão recomendada:** manter como **piloto fechado**.
+
+**Não fazer agora:**
+
+- abrir cadastro público amplo;
+- prometer billing automático sem validação real;
+- vender `Premium` como fully self-service;
+- depender de implantação manual sem runbook;
+- lançar campanha antes de CI confiável.
+
+**Fazer agora:**
+
+- escolher 3 a 5 escolas piloto;
+- documentar jornada de onboarding;
+- medir TTV;
+- validar billing em sandbox;
+- corrigir testes e estabilidade;
+- fechar jurídico/LGPD;
+- usar o scorecard semanal como único critério de avanço.
+
+## 13. Como usar esta nota
+
+Esta nota deve ser revisada semanalmente até o lançamento. A cada revisão:
+
+1. atualizar a matriz de score;
+2. atualizar status dos critérios de saída do piloto;
+3. registrar decisões founder;
+4. mover tarefas concluídas no OpenSpec;
+5. só avançar estágio de lançamento quando P0 estiver zerado.
