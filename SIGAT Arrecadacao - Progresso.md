@@ -65,9 +65,9 @@ Resposta:
 }
 ```
 
-### Procedures Criadas (Credito) - Total: 12
+### Procedures Criadas (Credito) - Total: 14
 
-#### Parcelamento (5)
+#### Parcelamento (6)
 - SimularParcelamento ✅
 - HomologarParcelamento ✅
 - CancelarParcelamento ✅
@@ -75,12 +75,16 @@ Resposta:
 - ConsultarParcelamento ✅
 - CalcularJurosMulta ✅
 
-#### Certidão/Documentos (5)
+#### Certidão/Documentos (6)
 - ObterCertidaoContribuinte ✅
 - EmitirCertidao ✅
 - ObterXmlCertidaoDividaAtiva ✅
 - ObterXmlListaDebitos ✅
 - ObterDctoInscricaoDividaAtiva ✅
+
+#### Débito/Cálculo (2)
+- ObterDemocraturaCalculoPaf ✅
+- ObterHistoricoPagamentoPaf ✅
 
 ### Total Procedures Stubs
 - Credito: 143 procedures registradas
