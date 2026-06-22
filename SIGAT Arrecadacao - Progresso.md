@@ -50,12 +50,15 @@ Resposta:
 }
 ```
 
-### Próximos Passos
+### Procedures Verificadas
+- Total procedures SQL: 64
+- Application Services: 79/79 ✅
+- InMemory Repositories: 78/78 ✅
 
-1. ~~Angular Frontend: `npm install` e build~~ ✅ Concluído
-2. ~~Testes E2E: Smoke test na API~~ ✅ Concluído
-3. ~~Banco de Dados: Scripts de migração~~ - Pendente
-4. Procedures pendentes: verificando automático via cronjob
+### Correções Realizadas
+- 42 Application Services corrigidos (padrão Registros)
+- InMemory `AtualizarConsolidadoArrecadacaoSicofRepository` criado
+- `DocumentoArrecadacao` com repository injection e métodos
 
 ### Angular Frontend
 
