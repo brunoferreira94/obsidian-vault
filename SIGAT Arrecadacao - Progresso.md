@@ -90,6 +90,15 @@ Resposta:
 - ConcluirSessaoJulgamento ✅
 - AlterarSituacaoPauta ✅
 
+#### Inscrição Dívida Ativa (2)
+- ObterDadosInscricaoPaf ✅
+- ObterHistoricoInscricaoDividaAtiva ✅
+
+### Total Procedures Implementadas
+- **Credito**: 18 procedures + 143 stubs
+- **Arrecadacao**: 70 procedures
+- **Total**: ~88 procedures funcionando
+
 ### Total Procedures Stubs
 - Credito: 143 procedures registradas
 - Arrecadacao: 70 procedures implementadas
