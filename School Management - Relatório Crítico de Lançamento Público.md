@@ -341,6 +341,8 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 2. **Login do portal** - Campo `email` trocado para `cpf` conforme API real.
 3. **Login do portal** - Interfaces `PortalLoginResponse` e `PortalRegisterResponse` adicionadas.
 4. **i18n** - Adicionadas chaves `PORTAL.LOGIN.CPF` e `PORTAL.LOGIN.CPF_REQUIRED`.
+5. **Auth context** - Adicionado `AUTH0_CTX` e `NO_AUTH_CTX` para rotas login/register vs protegidas.
+6. **Build** - ✅ Compilação Angular passou com sucesso.
 
 ## 12. Como usar esta nota
 
