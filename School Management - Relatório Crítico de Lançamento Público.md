@@ -335,6 +335,13 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 
 4. **Termos + Privacidade**: Páginas estáticas carregadas, mas não há endpoint de gravação da aceitação.
 
+### Correções implementadas
+
+1. **Login do portal** - Corrigido endpoint para `/portal/auth/login` (era `/portal/login`).
+2. **Login do portal** - Campo `email` trocado para `cpf` conforme API real.
+3. **Login do portal** - Interfaces `PortalLoginResponse` e `PortalRegisterResponse` adicionadas.
+4. **i18n** - Adicionadas chaves `PORTAL.LOGIN.CPF` e `PORTAL.LOGIN.CPF_REQUIRED`.
+
 ## 12. Como usar esta nota
 
 Esta nota deve ser revisada semanalmente até o lançamento. A cada revisão:
