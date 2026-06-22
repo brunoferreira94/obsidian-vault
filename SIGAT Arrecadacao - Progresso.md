@@ -86,6 +86,10 @@ Resposta:
 - ObterDemocraturaCalculoPaf ✅
 - ObterHistoricoPagamentoPaf ✅
 
+#### Julgamento/Pauta (2)
+- ConcluirSessaoJulgamento ✅
+- AlterarSituacaoPauta ✅
+
 ### Total Procedures Stubs
 - Credito: 143 procedures registradas
 - Arrecadacao: 70 procedures implementadas
