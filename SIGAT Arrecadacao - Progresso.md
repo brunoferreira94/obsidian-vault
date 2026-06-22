@@ -52,10 +52,27 @@ Resposta:
 
 ### Próximos Passos
 
-1. Angular Frontend: `npm install` e build
-2. Testes E2E: Smoke test na API
-3. Banco de Dados: Scripts de migração
-4. Procedures pendentes: ~7 restantes
+1. ~~Angular Frontend: `npm install` e build~~ ✅ Concluído
+2. ~~Testes E2E: Smoke test na API~~ ✅ Concluído
+3. ~~Banco de Dados: Scripts de migração~~ - Pendente
+4. Procedures pendentes: verificando automático via cronjob
+
+### Angular Frontend
+
+| Arquivo | Status |
+|---------|--------|
+| `arrecadacao.models.ts` | ✅ Updated com RelatorioGerencial models |
+| `arrecadacao.service.ts` | ✅ Method emitirRelatorioGerencialOsDetalheIndicioEliminado |
+| `proxy.conf.json` | ✅ Configurado |
+| `environment.ts` | ✅ apiUrl = http://localhost:5082/api |
+
+### Services Rodando
+
+| Service | Port | Status |
+|---------|------|--------|
+| Angular Frontend | 4200 | ✅ HTML carregado |
+| Sigat.Arrecadacao.Api | 5082 | ✅ healthy |
+| Sigat.ApiGateway | 5000 | ⚠️ YARP proxy 404 (investigar config) |
 
 ### Cronjob Automático
 
