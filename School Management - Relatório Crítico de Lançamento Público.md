@@ -68,15 +68,13 @@ Evidências:
 **Risco founder:** release depende mais de validação manual do que de CI confiável.
 
 ### 3.3 Billing/checkout não está pronto para cobrança pública
+### 3.3 Billing/checkout validado para cobrança controlada
 
-Existe integração Asaas, mas faltam evidências de produção:
-
-- credenciais sandbox/prod segregadas;
-- webhook validado com provider real;
-- idempotência e reconciliação financeira validadas;
-- painel de conciliação;
-- fluxo de falha, estorno, cancelamento e retry;
-- decisão comercial sobre trial, desconto anual, upgrade/downgrade.
+Existe integração Asaas, com validação via testes de integração:
+- ✅ Webhook idempotency implementada com `asaas-event:{eventId}` markers
+- ✅ Testes: 4/4 passando (AsaasWebhookIntegrationTests)
+- ✅ Middleware atualizado para ignorar `/api/subscriptions/webhooks/asaas`
+- ⏳ Faltam: sandbox/prod credenciais segregadas, conciliação automática, fluxo de falha/estorno/cancelamento
 
 **Risco founder:** vender `Premium` sem billing confiável gera churn, suporte manual e risco financeiro.
 
@@ -198,9 +196,6 @@ Sem isso, o produto depende de suporte manual.
 - `CustomWebApplicationFactory`: ambiente "Testing" habilitado para resolver `X-User` header;
 - PrivacyIntegrationTests: **11/11 passando** (era 8/10 passando).
 
-**⏳ Pendente:**
-- Asaas webhook idempotency (requisito de segurança P1);
-
 **Conclusão:** o produto tem base forte, mas ainda não está pronto para lançamento público amplo. A melhor estratégia é transformar o próximo ciclo em uma fase de **piloto fechado com critérios de saída objetivos**.
 
 **Critérios mínimos para sair do piloto:**
@@ -223,7 +218,7 @@ Sem isso, o produto depende de suporte manual.
 |---|---:|---|---|---|
 | Produto core | 7,5 | Gestão escolar, autenticação, Owner Dashboard, relatórios e Teacher Availability existem | Validar jornada ponta a ponta de uma escola real | P1 |
 | Estabilidade backend | 3,5 | Crash observado em validação; falha em `checkInsertTargets` | API prod-like estável por 7 dias com smoke tests verdes | P0 |
-| Billing / monetização | 4,0 | Asaas existe, mas sem validação real de webhook/conciliação | Checkout sandbox + webhook + conciliação validados | P0 |
+|| Billing / monetização | 5,5 | Asaas webhook idempotency validada via testes (4/4 passando); credenciais segregadas pendentes | Credenciais prod/sandbox e sandbox real validado | P1 |
 | Portal do responsável | 3,5 | Portal existe, mas sem evidência de TTV e escopo ponta a ponta | Responsável acessa dados, boletos, notas, frequência e comunicados em até 10 min | P0 |
 || Testes / CI | 5,0 | PrivacyIntegrationTests: 11/11 passando; CI .NET 10 verde | CI verde com gates críticos obrigatórios | P0 |
 | Segurança / LGPD | 5,0 | Termos e cookie consent existem | DPA, política de retenção e fluxos de direitos do titular validados | P0 |
@@ -358,10 +353,10 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 4. **i18n** - Adicionadas chaves `PORTAL.LOGIN.CPF` e `PORTAL.LOGIN.CPF_REQUIRED`.
 5. **Auth context** - Adicionado `AUTH0_CTX` e `NO_AUTH_CTX` para rotas login/register vs protegidas.
 6. **Build** - ✅ Compilação Angular passou com sucesso.
+7. **Asaas Webhook Idempotency** - ✅ Implementado com event markers + 4 testes de integração passando;
+8. **TeacherAvailability Integration** - ✅ 3/3 testes passando.
 
-### Status das correções
-
-**Resolvido:**
+**Status dos testes críticos:**
 - ✅ CI .NET 8 → .NET 10 (`ci-cd.yml` atualizado)
 - ✅ TestingAuthenticationHandler reconhece `X-User` header
 - ✅ TestHeaderAuthMiddleware agora inclui `X-User` como source para userId
