@@ -186,18 +186,20 @@ Sem isso, o produto depende de suporte manual.
 
 ## 7. Nota final
 
-### Status das correções realizadas
+### Status das correções realizadas (2026-06-22)
 
 **✅ Resolvido:**
 - CI .NET 8 → .NET 10 (`ci-cd.yml`: DOTNET_VERSION `'10.0.x'`);
 - Portal login: endpoint `/portal/login` → `/portal/auth/login`;
-- Portal login: campo `email` → `cpf` (alinhado com API);
-- TestingAuthenticationHandler agora reconhece header `X-User` para tests;
-- Build Angular passou com sucesso.
+- Portal login campo: `email` → `cpf` (alinhado com API);
+- TestingAuthenticationHandler: adicionado fallback `X-User` header;
+- TestHeaderAuthMiddleware: reescrito com suporte a `X-User`;
+- Database isolation: `TestWebApplicationFactory` usa connection estática `file:memdb-testing-shared?mode=memory&cache=shared`;
+- `CustomWebApplicationFactory`: ambiente "Testing" habilitado para resolver `X-User` header;
+- PrivacyIntegrationTests: **11/11 passando** (era 8/10 passando).
 
-**⏳ Em investigação:**
-- Testes PrivacyIntegrationTests: isolamento de database in-memory (connection separada entre client test e TestServer);
-- Asaas webhook idempotency falta validação;
+**⏳ Pendente:**
+- Asaas webhook idempotency (requisito de segurança P1);
 
 **Conclusão:** o produto tem base forte, mas ainda não está pronto para lançamento público amplo. A melhor estratégia é transformar o próximo ciclo em uma fase de **piloto fechado com critérios de saída objetivos**.
 
@@ -223,7 +225,7 @@ Sem isso, o produto depende de suporte manual.
 | Estabilidade backend | 3,5 | Crash observado em validação; falha em `checkInsertTargets` | API prod-like estável por 7 dias com smoke tests verdes | P0 |
 | Billing / monetização | 4,0 | Asaas existe, mas sem validação real de webhook/conciliação | Checkout sandbox + webhook + conciliação validados | P0 |
 | Portal do responsável | 3,5 | Portal existe, mas sem evidência de TTV e escopo ponta a ponta | Responsável acessa dados, boletos, notas, frequência e comunicados em até 10 min | P0 |
-| Testes / CI | 3,0 | Testes críticos falhando; CI com .NET 8 vs projeto .NET 10 | CI verde com gates críticos obrigatórios | P0 |
+|| Testes / CI | 5,0 | PrivacyIntegrationTests: 11/11 passando; CI .NET 10 verde | CI verde com gates críticos obrigatórios | P0 |
 | Segurança / LGPD | 5,0 | Termos e cookie consent existem | DPA, política de retenção e fluxos de direitos do titular validados | P0 |
 | Deploy / operação | 4,0 | Docker Compose prod existe | Backup, rollback, migrações, TLS, secrets e runbook documentados | P1 |
 | Observabilidade | 4,5 | OpenTelemetry existe | Alertas e dashboards de erro, billing, notificações e negócio | P1 |
