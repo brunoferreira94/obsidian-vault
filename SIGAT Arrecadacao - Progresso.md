@@ -65,10 +65,22 @@ Resposta:
 }
 ```
 
-### Procedures Criadas (Credito)
-- SimularParcelamento (stub)
-- ConsultarDebitoConta (stub)
-- ObterCertidaoContribuinte (stub)
+### Procedures Criadas (Credito) - Total: 12
+
+#### Parcelamento (5)
+- SimularParcelamento ✅
+- HomologarParcelamento ✅
+- CancelarParcelamento ✅
+- GerarGuiaParcelamento ✅
+- ConsultarParcelamento ✅
+- CalcularJurosMulta ✅
+
+#### Certidão/Documentos (5)
+- ObterCertidaoContribuinte ✅
+- EmitirCertidao ✅
+- ObterXmlCertidaoDividaAtiva ✅
+- ObterXmlListaDebitos ✅
+- ObterDctoInscricaoDividaAtiva ✅
 
 ### Total Procedures Stubs
 - Credito: 143 procedures registradas
