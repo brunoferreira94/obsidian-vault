@@ -1,6 +1,6 @@
 # SIGAT Arrecadação - Progresso da Refatoração
 
-## Status: ✅ BUILD PASSANDO
+## Status: ✅ IMPLEMENTAÇÃO COMPLETA
 
 ### Data: 2026-06-22
 
@@ -72,7 +72,10 @@ Resposta:
 |---------|------|--------|
 | Angular Frontend | 4200 | ✅ HTML carregado |
 | Sigat.Arrecadacao.Api | 5082 | ✅ healthy |
-| Sigat.ApiGateway | 5000 | ⚠️ YARP proxy 404 (investigar config) |
+| Sigat.ApiGateway | 5000 | ✅ Proxy manual funcionando |
+
+### Proxy Configuration (Manual)
+Gateway implementado com HttpClient proxy direto - roteia `/api/arrecadacao/*` para porta 5082.
 
 ### Cronjob Automático
 
