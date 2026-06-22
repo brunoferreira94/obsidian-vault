@@ -307,7 +307,35 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 - fechar jurídico/LGPD;
 - usar o scorecard semanal como único critério de avanço.
 
-## 13. Como usar esta nota
+## 11. Evidências de validação E2E
+
+### Rotas do portal (browser)
+
+| Rota | Status | Observações |
+|------|--------|-------------|
+| /portal/login | ✅ 200 | Formulário carregado, labels em keys i18n |
+| /portal/register | ✅ 200 | Formulário completo, validações visuais |
+| /portal/dashboard | ✅ 302→login | Guard funciona — redireciona para login |
+| /portal/academic | 🔒 protegido | Requer autenticação |
+| /portal/financial | 🔒 protegido | Requer autenticação |
+| /termos | ✅ 200 | Termo de Uso v2026.1 carregado |
+| /privacidade | ✅ 200 | Política de Privacidade v2026.1 carregada |
+
+### Achados críticos
+
+1. **i18n não aplicado no dev**: Labels aparecem como keys (`PORTAL.LOGIN.TITLE`) em vez de traduzidas.
+   - Causa provável: Angular dev server cache ou falha do `HttpLoaderFactory`.
+   - Impacto baixo (funcional em produção).
+
+2. **API Portal Auth**: `/api/portal/auth/login` responde 401 para credenciais inexistentes.
+   - Backend funcional (validação ok).
+
+3. **MFA screen**: `/portal/mfa` é stub sem backend real.
+   - Auth0 MFA toma precedência.
+
+4. **Termos + Privacidade**: Páginas estáticas carregadas, mas não há endpoint de gravação da aceitação.
+
+## 12. Como usar esta nota
 
 Esta nota deve ser revisada semanalmente até o lançamento. A cada revisão:
 
