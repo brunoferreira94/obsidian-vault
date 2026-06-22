@@ -90,10 +90,20 @@ Resposta:
 - Credito: 143 procedures registradas
 - Arrecadacao: 70 procedures implementadas
 
+### Status APIs (Swagger habilitado globalmente)
+| API | Procedures | Status |
+|-----|------------|--------|
+| Arrecadacao | 70 implementadas + endpoints | ✅ |
+| Credito | 14 implementadas + 143 stubs | ✅ |
+| Cobranca | CRUD completo | ✅ |
+| Contribuinte | CRUD + stubs | ✅ |
+| Relatorios | stubs básicos | ✅ |
+| Gateway | proxy manual | ✅ |
+
 ### Próximos Steps
-1. Iniciar Credito API (porta 5083)
-2. Adicionar mais procedures críticas
-3. Configurar Swagger em todas APIs fora IsDevelopment
+1. Iniciar todas APIs (portas 5082-5086)
+2. Configurar Gateway proxy para Credito/Cobranca
+3. Testar via Swagger/UI
 
 ### Angular Frontend
 
