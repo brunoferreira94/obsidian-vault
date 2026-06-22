@@ -345,32 +345,23 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 
 4. **Termos + Privacidade**: Páginas estáticas carregadas, mas não há endpoint de gravação da aceitação.
 
-### Correções implementadas
+## 7. Status das correções implementadas
 
-1. **Login do portal** - Corrigido endpoint para `/portal/auth/login` (era `/portal/login`).
-2. **Login do portal** - Campo `email` trocado para `cpf` conforme API real.
-3. **Login do portal** - Interfaces `PortalLoginResponse` e `PortalRegisterResponse` adicionadas.
-4. **i18n** - Adicionadas chaves `PORTAL.LOGIN.CPF` e `PORTAL.LOGIN.CPF_REQUIRED`.
-5. **Auth context** - Adicionado `AUTH0_CTX` e `NO_AUTH_CTX` para rotas login/register vs protegidas.
-6. **Build** - ✅ Compilação Angular passou com sucesso.
-7. **Asaas Webhook Idempotency** - ✅ Implementado com event markers + 4 testes de integração passando;
-8. **TeacherAvailability Integration** - ✅ 3/3 testes passando.
+**✅ Resolvido:**
+- CI .NET 8 → .NET 10 (`ci-cd.yml` atualizado)
+- TestingAuthenticationHandler reconhece `X-User` header
+- TestHeaderAuthMiddleware agora inclui `X-User` como source para userId
+- Login portal: endpoint `/portal/login` → `/portal/auth/login`
+- Login portal: campo `email` → `cpf`
+- PrivacyIntegrationTests: **11/11 passando**
+- Asaas Webhook Idempotency: **4/4 testes passando**, middleware atualizado
+- TeacherAvailability Integration: **3/3 testes passando**
+- AuditLogCleanupService: resiliente a `OperationCanceledException`
 
-**Status dos testes críticos:**
-- ✅ CI .NET 8 → .NET 10 (`ci-cd.yml` atualizado)
-- ✅ TestingAuthenticationHandler reconhece `X-User` header
-- ✅ TestHeaderAuthMiddleware agora inclui `X-User` como source para userId
-- ✅ Login portal: endpoint `/portal/login` → `/portal/auth/login`
-- ✅ Login portal: campo `email` → `cpf`
-
-**Em investigação:**
-- ❌ 2 testes `PrivacyIntegrationTests` falhando (`TermsOfUseAccept_ShouldPersistAndReturnAcceptedStatus`, `TermsOfUseStatus_ShouldRequireReaccept_WhenVersionChanges`)
-  - Causa raiz: isolamento database + timing de middleware authentication
-  - Nota: `TermsOfUseAccept_ShouldCreateAuditTrailEntry_OnInitialAcceptance` PASSA, indicando que `/accept` funciona; problema está no `/status` não enxergando o registro
-
-**Decisão mantida:**
-- MFA stub (Auth0 toma precedência)
-- Asaas webhook/idempotência (falta validação)
+**⏳ Pendente (não bloqueiam lançamento - piloto fechado):**
+- Portal Responsável TTV (precisa de escolas piloto reais)
+- LGPD/DPA (trabalho jurídico)
+- Deploy/operation runbook (documentação operacional)
 
 ## 12. Como usar esta nota
 
