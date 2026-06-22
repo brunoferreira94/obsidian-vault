@@ -344,6 +344,18 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 5. **Auth context** - Adicionado `AUTH0_CTX` e `NO_AUTH_CTX` para rotas login/register vs protegidas.
 6. **Build** - ✅ Compilação Angular passou com sucesso.
 
+### Status das correções
+
+**Resolvido:**
+- ✅ CI .NET 8 → .NET 10 (arquivo `.github/workflows/ci-cd.yml`)
+- ✅ TestingAuthenticationHandler agora reconhece header `X-User` como `NameIdentifier` (corrigido TermsOfUse tests)
+- ✅ Login portal: endpoint `/portal/login` → `/portal/auth/login`
+- ✅ Login portal: campo `email` → `cpf` alinhado com API
+
+**Pendente:**
+- ❌ MFA stub (decisão: Auth0 toma precedência)
+- ❌ Asaas webhook/idempotência (falta validação de webhook)
+
 ## 12. Como usar esta nota
 
 Esta nota deve ser revisada semanalmente até o lançamento. A cada revisão:
