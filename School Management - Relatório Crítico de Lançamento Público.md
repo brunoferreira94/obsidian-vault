@@ -186,6 +186,19 @@ Sem isso, o produto depende de suporte manual.
 
 ## 7. Nota final
 
+### Status das correções realizadas
+
+**✅ Resolvido:**
+- CI .NET 8 → .NET 10 (`ci-cd.yml`: DOTNET_VERSION `'10.0.x'`);
+- Portal login: endpoint `/portal/login` → `/portal/auth/login`;
+- Portal login: campo `email` → `cpf` (alinhado com API);
+- TestingAuthenticationHandler agora reconhece header `X-User` para tests;
+- Build Angular passou com sucesso.
+
+**⏳ Em investigação:**
+- Testes PrivacyIntegrationTests: isolamento de database in-memory (connection separada entre client test e TestServer);
+- Asaas webhook idempotency falta validação;
+
 **Conclusão:** o produto tem base forte, mas ainda não está pronto para lançamento público amplo. A melhor estratégia é transformar o próximo ciclo em uma fase de **piloto fechado com critérios de saída objetivos**.
 
 **Critérios mínimos para sair do piloto:**
