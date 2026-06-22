@@ -360,14 +360,20 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 ### Status das correções
 
 **Resolvido:**
-- ✅ CI .NET 8 → .NET 10 (arquivo `.github/workflows/ci-cd.yml`)
-- ✅ TestingAuthenticationHandler agora reconhece header `X-User` como `NameIdentifier` (corrigido TermsOfUse tests)
+- ✅ CI .NET 8 → .NET 10 (`ci-cd.yml` atualizado)
+- ✅ TestingAuthenticationHandler reconhece `X-User` header
+- ✅ TestHeaderAuthMiddleware agora inclui `X-User` como source para userId
 - ✅ Login portal: endpoint `/portal/login` → `/portal/auth/login`
-- ✅ Login portal: campo `email` → `cpf` alinhado com API
+- ✅ Login portal: campo `email` → `cpf`
 
-**Pendente:**
-- ❌ MFA stub (decisão: Auth0 toma precedência)
-- ❌ Asaas webhook/idempotência (falta validação de webhook)
+**Em investigação:**
+- ❌ 2 testes `PrivacyIntegrationTests` falhando (`TermsOfUseAccept_ShouldPersistAndReturnAcceptedStatus`, `TermsOfUseStatus_ShouldRequireReaccept_WhenVersionChanges`)
+  - Causa raiz: isolamento database + timing de middleware authentication
+  - Nota: `TermsOfUseAccept_ShouldCreateAuditTrailEntry_OnInitialAcceptance` PASSA, indicando que `/accept` funciona; problema está no `/status` não enxergando o registro
+
+**Decisão mantida:**
+- MFA stub (Auth0 toma precedência)
+- Asaas webhook/idempotência (falta validação)
 
 ## 12. Como usar esta nota
 
