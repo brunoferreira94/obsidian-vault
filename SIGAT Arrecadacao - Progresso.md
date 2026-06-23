@@ -65,12 +65,12 @@ Resposta:
 }
 ```
 
-### Procedures Criadas (Credito) - Total: 14
+### Procedures Criadas (Credito) - Total: 23
 
 #### Parcelamento (6)
 - SimularParcelamento ✅
 - HomologarParcelamento ✅
-- CancelarParcelamento ✅
+...[truncated]
 - GerarGuiaParcelamento ✅
 - ConsultarParcelamento ✅
 - CalcularJurosMulta ✅
