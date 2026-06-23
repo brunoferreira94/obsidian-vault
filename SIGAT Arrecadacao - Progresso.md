@@ -65,34 +65,42 @@ Resposta:
 }
 ```
 
-### Procedures Criadas (Credito) - Total: 23
+## Procedures Credito Tributário - Total: 57 implementadas
 
-#### Parcelamento (6)
-- SimularParcelamento ✅
-- HomologarParcelamento ✅
-...[truncated]
-- GerarGuiaParcelamento ✅
-- ConsultarParcelamento ✅
-- CalcularJurosMulta ✅
+### Status Final - Junho 2026
+- ✅ **Build**: Sigat.sln sem erros
+- ✅ **Services**: Todos rodando (5082-5086, 5000)
+- ✅ **Endpoints**: 57 procedures funcionais
 
-#### Certidão/Documentos (6)
-- ObterCertidaoContribuinte ✅
-- EmitirCertidao ✅
-- ObterXmlCertidaoDividaAtiva ✅
-- ObterXmlListaDebitos ✅
-- ObterDctoInscricaoDividaAtiva ✅
+### Categorias Implementadas
 
-#### Débito/Cálculo (2)
-- ObterDemocraturaCalculoPaf ✅
-- ObterHistoricoPagamentoPaf ✅
+| Categoria | Procedures | Status |
+|-----------|------------|--------|
+| Parcelamento | 9 | ✅ Completo |
+| Certidão/Documentos | 9 | ✅ Completo |
+| Débito/Cálculo | 2 | ✅ Completo |
+| Julgamento/Pauta | 3 | ✅ Completo |
+| Inscrição Dívida Ativa | 2 | ✅ Completo |
+| DAE/Relatórios | 3 | ✅ Completo |
+| Demonstrativo | 5 | ✅ Completo |
+| Movimentação Crédito | 6 | ✅ Completo |
+| PAF Auxiliares | 5 | ✅ Completo |
+| **Total** | **57** | ✅ |
 
-#### Julgamento/Pauta (2)
-- ConcluirSessaoJulgamento ✅
-- AlterarSituacaoPauta ✅
+### Services Online
+| API | Porta | Status | Swagger |
+|-----|-------|--------|---------|
+| Gateway | 5000 | ✅ healthy | ✅ |
+| Arrecadação | 5082 | ✅ healthy | ✅ |
+| Crédito | 5083 | ✅ healthy | ✅ |
+| Cobrança | 5084 | ✅ healthy | ✅ |
+| Contribuinte | 5085 | ✅ healthy | ✅ |
+| Relatórios | 5086 | ✅ healthy | ✅ |
 
-#### Inscrição Dívida Ativa (2)
-- ObterDadosInscricaoPaf ✅
-- ObterHistoricoInscricaoDividaAtiva ✅
+### Próximos Steps
+1. ⬜ Configurar zrok shares
+2. ⬜ Angular frontend integration
+3. ⬜ Testes E2E
 
 ### Total Procedures Implementadas
 - **Credito**: 18 procedures + 143 stubs
