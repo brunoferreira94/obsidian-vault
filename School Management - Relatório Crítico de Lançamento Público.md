@@ -360,8 +360,9 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 
 **⏳ Pendente (não bloqueiam lançamento - piloto fechado):**
 - Portal Responsável TTV (precisa de escolas piloto reais)
-- Política de retenção/analytics (task 6.4)
-- Revisão de permissões sensíveis (task 6.5/7.2)
+- TLS/segregação de ambientes (task 7.2)
+- Alertas operacionais (task 7.3)
+- Dashboard de métricas (task 7.4)
 
 ## 12. Como usar esta nota
 
