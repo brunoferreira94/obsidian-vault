@@ -3,11 +3,13 @@
 ## Análise Técnica (2026-06)
 
 ### Segurança
-- **Vulnerabilities**: Critical: 2, High: 2
-- **Hardcoded secrets**: JWT secret in appsettings.json (blocked in version control)
-- **CAPTCHA dev-mode**: Bypass pattern exists, requires environment variable in production
+- **Vulnerabilities**: Critical: 2, High: 2, Moderate: 0
+- **Hardcoded secrets**: JWT secret `change-this-development-secret-key-please-1234567890` in appsettings.json ✅ Production config uses `${JWT_SECRET}`
+- **CAPTCHA dev-mode**: Bypass at line 38 in CaptchaController.cs ⚠️ Requires production env var override
+- **XSS Risk**: 0 (all `[innerHTML]` usages properly sanitized)
+- **CORS**: Origin-restricted with credentials ✅ Secure
 
-### Status Features
+### Features Status
 - 🔔 Notificações push proativas - Avaliação de implementação
 - 📊 Analytics preditivo - Plano futuro
 - 🤖 Chatbot IA - Sugerido em 2026-06
@@ -17,8 +19,8 @@
 - 🏆 Ranking de notas - Feature pendente
 - 🎤 Reconhecimento de voz - Feature pendente
 
-### Score: ⚠️ 8/10
-*Auto-updated 2026-06-23 21:51*
+### Score: 7/10
+*Auto-updated 2026-06-24 10:10*
 
 ---
 
