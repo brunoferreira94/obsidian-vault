@@ -243,6 +243,7 @@ Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 | Deploy | backup, rollback e runbook testados | ⚠️ Runbook criado, teste real pendente |
 | Suporte | procedimento de incidente e SLA mínimo documentados | ✅ SLA + runbook criados |
 | Produto | pelo menos 1 fluxo financeiro e 1 comunicado usados por escola real | ⚠️ Funcional, validação piloto pendente |
+| Onboarding self-service | SetupWizard sem suporte manual | ✅ 2/2 testes passando (exceção TermsOfUse adicionada) |
 
 ## 11. Plano independente de 7 dias
 
