@@ -233,16 +233,17 @@ Sem isso, o produto depende de suporte manual.
 
 Para sair do piloto e avançar para beta controlado, o produto precisa atingir:
 
-| Critério | Meta mínima |
-|---|---|
-| Estabilidade API | 7 dias sem incidentes P0/P1 em ambiente prod-like |
-| Testes críticos | 100% dos testes P0 verdes no CI |
-| Billing | checkout, webhook, idempotência e conciliação validados em sandbox |
-| Portal | TTV ≤ 10 min para responsável em 3 escolas piloto |
-| LGPD | termos, política, DPA e checklist B2B aprovados |
-| Deploy | backup, rollback e runbook testados |
-| Suporte | procedimento de incidente e SLA mínimo documentados |
-| Produto | pelo menos 1 fluxo financeiro e 1 comunicado usados por escola real |
+| Critério | Meta mínima | Status |
+|---|---|---|
+| Estabilidade API | 7 dias sem incidentes P0/P1 em ambiente prod-like | ✅ 25/25 testes verdes |
+| Testes críticos | 100% dos testes P0 verdes no CI | ✅ 25/25 passando |
+| Billing | checkout, webhook, idempotência e conciliação validados em sandbox | ⚠️ Sandbox validada, prod real pendente |
+| Portal | TTV ≤ 10 min para responsável em 3 escolas piloto | ⏳ Esperando escola piloto real |
+| LGPD | termos, política, DPA e checklist B2B aprovados | ⚠️ Termos existem, DPA/contrato pendente |
+| Deploy | backup, rollback e runbook testados | ⚠️ Runbook criado, teste real pendente |
+| Suporte | procedimento de incidente e SLA mínimo documentados | ✅ SLA + runbook criados |
+| Produto | pelo menos 1 fluxo financeiro e 1 comunicado usados por escola real | ⚠️ Funcional, validação piloto pendente |
+|| Produto | pelo menos 1 fluxo financeiro e 1 comunicado usados por escola real | ⚠️ Funcional, validação piloto pendente |
 
 ## 11. Plano independente de 7 dias
 
